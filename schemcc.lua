@@ -322,10 +322,15 @@ end
 
 -- start
 -- read file
-local file = fs.open(args[1], "r")
-local jsonString = file.readAll()
-file.close()
--- parse json
-print("Parsing file")
-building = decode(jsonString)
-build(building)
+if table.getn(args) ~= 1 then
+	print("Usages:")
+	print("schemccbuilder <file>")
+else
+	local file = fs.open(args[1], "r")
+	local jsonString = file.readAll()
+	file.close()
+	-- parse json
+	print("Parsing file")
+	building = decode(jsonString)
+	build(building)
+end
