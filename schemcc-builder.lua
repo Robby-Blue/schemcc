@@ -248,19 +248,15 @@ function build(building)
 				end
 			end
 			turtle.turnLeft()
+			turtle.forward()
 			turtle.turnLeft()
 			for z = 0, width do
 				turtle.forward()
 			end
 			turtle.turnRight()
-			turtle.forward()
 		else
 			turtle.forward()
 		end
-	end
-	print("Coming back")
-	for x = 0, length do
-		turtle.back()
 	end
 	print("Done")
 end
@@ -293,7 +289,7 @@ end
 function placeBlock(blocks, x, y, z)
 	--	try to place the block
 	for key, block in pairs(blocks) do
-		if block.x == x and block.y == y and block.z == z then
+		if block.x == x and block.y - 1 == y and block.z == z then
 			if block.material then
 				selectBlock(block.material)
 				turtle.placeDown()
